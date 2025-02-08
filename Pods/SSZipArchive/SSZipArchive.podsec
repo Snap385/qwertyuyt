@@ -1,0 +1,7 @@
+Pod::Spec.new do |s|
+  s.name             = 'SSZipArchive'
+  s.version          = '2.4.3'  # Укажи актуальную версию
+  s.summary          = 'A utility for reading and writing zip files.'
+  s.source_files     = 'SSZipArchive/**/*.{h,m,swift}'  # Путь к исходным файлам пода
+  s.frameworks       = 'Foundation, UIKit'  # Указание нужных фреймворков, если они есть
+end

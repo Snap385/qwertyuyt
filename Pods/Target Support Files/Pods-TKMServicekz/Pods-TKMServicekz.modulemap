@@ -1,0 +1,6 @@
+framework module Pods_TKMServicekz {
+  umbrella header "Pods-TKMServicekz-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,9 +9,9 @@ target default_app_target do
   use_frameworks!
 
   # Локальные поды
-  pod 'GoNativeCore', :path => './Pods/GoNativeCore'
-  pod 'SSZipArchive', :path => './Pods/SSZipArchive'
-  pod 'MedianIcons', :path => './Pods/MedianIcons'
+  pod 'GoNativeCore', :podspec => './Pods/GoNativeCore/GoNativeCore.podspec'
+  pod 'SSZipArchive', :podspec => './Pods/GoNativeCore/SSZipArchive.podspec'
+  pod 'MedianIcons', :podspec => './Pods/GoNativeCore/MedianIcons.podspec'
 
   use_plugins!
 

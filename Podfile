@@ -10,8 +10,8 @@ target default_app_target do
 
   # Локальные поды
 pod 'GoNativeCore', :podspec => './Pods/GoNativeCore/GoNativeCore.podspec'
-pod 'SSZipArchive', :podspec => File.expand_path('./Pods/GoNativeCore/SSZipArchive.podspec')
-pod 'MedianIcons', :podspec => File.expand_path('./Pods/GoNativeCore/MedianIcons.podspec')
+pod 'SSZipArchive', :podspec => './Pods/GoNativeCore/SSZipArchive.podspec'
+pod 'MedianIcons', :podspec => './Pods/GoNativeCore/MedianIcons.podspec'
 
   use_plugins!
 

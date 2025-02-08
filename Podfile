@@ -2,7 +2,6 @@
 platform :ios, '13.0'
 
 source 'https://cdn.cocoapods.org/'
-pod 'GoNativeCore', :path => './Pods/GoNativeCore'
 
 require_relative './plugins.rb'
 

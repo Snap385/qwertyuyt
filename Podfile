@@ -1,27 +1,22 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 
-# Указываем источник для стандартных Pods (не для локального)
+# Стандартный источник для CocoaPods
 source 'https://cdn.cocoapods.org/'
 
 require_relative './plugins.rb'
 
 target default_app_target do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods для проекта
-  pod 'GoNativeCore', :path => './Pods/GoNativeCore'
+  # Локальные поды
+  pod 'GoNativeCore', :podspec => './Pods/GoNativeCore/GoNativeCore.podspec'
   pod 'SSZipArchive', :path => './Pods/SSZipArchive'
-
-  # Локальный pod для MedianIcons
   pod 'MedianIcons', :path => './Pods/MedianIcons'
 
   use_plugins!
 
   target 'MedianIOSTests' do
     inherit! :search_paths
-    # Pods для тестов
   end
 end
 

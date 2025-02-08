@@ -10,12 +10,6 @@ DEPENDENCIES:
   - MedianIcons
   - SSZipArchive
 
-SPEC REPOS:
-  "git@github.com:gonativeio/gonative-ios.git":
-    - GoNativeCore
-    - MedianIcons
-  trunk:
-    - SSZipArchive
 
 SPEC CHECKSUMS:
   GoNativeCore: 1d1afcc8d52c542cc1fac99049163ed2d1d4091a

@@ -1,63 +1,23 @@
 workflows:
-  deploy-prod:
-    name: Deploy Production Build
-    instance_type: mac_mini_m1  # Используем Mac Mini для сборки iOS-приложения
+  ios-build:
+    name: iOS Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
     environment:
-      groups:
-        - ssh_keys  # Добавляем группу секретов для SSH-доступа
       vars:
-        XCODE_WORKSPACE: "YourApp.xcworkspace"
-        XCODE_SCHEME: "YourAppScheme"
-        APPLE_CERTIFICATE: $CM_CERTIFICATE
-        APPLE_PROVISIONING_PROFILE: $CM_PROVISIONING_PROFILE
-      flutter: stable
-      xcode: latest
-    triggering:
-      events:
-        - tag
-      branch_patterns:
-        - pattern: "prod-v*"
-          include: true
-          source: true
+        XCODE_WORKSPACE: "MedianIcons.xcworkspace"
+        XCODE_SCHEME: "MedianIcons"
     scripts:
-      - name: Set up SSH
-        script: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-
-      - name: Clone repo and checkout tag
-        script: |
-          git clone git@github.com:your-org/your-repo.git app
-          cd app
-          git fetch --tags
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-          git checkout $LATEST_TAG
-
       - name: Install dependencies
         script: |
-          cd app
+          gem install bundler
+          bundle install
           pod install
 
-      - name: Build IPA
+      - name: Build unsigned IPA
         script: |
-          cd app
-          xcode-project use-profiles
-          xcode-project build-ipa \
-            --workspace "$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME" \
-            --export-method "app-store"
+          xcode-project use-workspace
+          xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --export-method ad-hoc
 
-      - name: Deploy to SSH server
-        script: |
-          scp -i ~/.ssh/id_rsa app/build/ios/ipa/*.ipa builder@build4.gonative.io:~/deploy.ipa
-          ssh -i ~/.ssh/id_rsa builder@build4.gonative.io << 'EOF'
-            cd ~/prod/build2
-            git fetch --tags
-            git checkout $LATEST_TAG
-            npm install
-            forever stopall
-            ./prod-forever.sh 2
-            echo "Deployed prod"
-          EOF
+    artifacts:
+      - build/ios/ipa/*.ipa

@@ -2,6 +2,7 @@ platform :ios, '13.0'
 
 # Стандартный источник для CocoaPods
 source 'https://cdn.cocoapods.org/'
+source 'https://github.com/Snap385/gogogogo.git'
 
 require_relative './plugins.rb'
 

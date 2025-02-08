@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       vars:
-        XCODE_WORKSPACE: "MedianIcons.xcworkspace"
+        XCODE_WORKSPACE: "TKMServicekz.xcworkspace"
         XCODE_SCHEME: "MedianIcons"
     scripts:
       - name: Install dependencies

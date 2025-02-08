@@ -1,0 +1,7 @@
+Pod::Spec.new do |s|
+  s.name             = 'MedianIcons'
+  s.version          = '1.0.8'  # Укажи актуальную версию
+  s.summary          = 'Icons for the Median UI library.'
+  s.source_files     = 'MedianIcons/**/*.{h,m,swift}'  # Путь к исходным файлам пода
+  s.frameworks       = 'UIKit'  # Указание нужных фреймворков, если они есть
+end

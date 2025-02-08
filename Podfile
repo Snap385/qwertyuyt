@@ -2,7 +2,6 @@ platform :ios, '13.0'
 
 # Указываем исходники CocoaPods
 source 'https://cdn.cocoapods.org/'
-source 'https://github.com/Snap385/qwertyuyt.git'
 
 require_relative './plugins.rb'
 
@@ -10,7 +9,7 @@ target default_app_target do
   use_frameworks!
 
   # Локальные поды
-  pod 'GoNativeCore', :git => 'https://github.com/Snap385/qwertyuyt.git', :path => 'Pods/GoNativeCore'
+  pod 'GoNativeCore', :path => './Pods/GoNativeCore'
   pod 'SSZipArchive', :path => './Pods/SSZipArchive'
   pod 'MedianIcons', :path => './Pods/MedianIcons'
 

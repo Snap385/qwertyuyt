@@ -9,7 +9,7 @@ target default_app_target do
   use_frameworks!
 
   # Локальные поды
-pod 'GoNativeCore', :podspec => File.expand_path('./Pods/GoNativeCore/GoNativeCore.podspec')
+pod 'GoNativeCore', :podspec => './Pods/GoNativeCore/GoNativeCore.podspec'
 pod 'SSZipArchive', :podspec => File.expand_path('./Pods/GoNativeCore/SSZipArchive.podspec')
 pod 'MedianIcons', :podspec => File.expand_path('./Pods/GoNativeCore/MedianIcons.podspec')
 
